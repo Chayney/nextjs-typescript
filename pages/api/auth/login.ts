@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@prisma/client';
-import bcrypt from 'bcr';
+import bcrypt from 'bcrypt';
 import { signToken, setAuthCookie } from '../../../lib/auth';
 
 const prisma = new PrismaClient();
