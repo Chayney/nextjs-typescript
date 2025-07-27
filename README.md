@@ -1,6 +1,6 @@
-#Todoリスト
+#Todoリスト  
 
-#技術構成
+#技術構成  
 Next.js (pages)  
 TypeScript  
 CSS Modules  
