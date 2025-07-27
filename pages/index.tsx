@@ -14,14 +14,23 @@ export default function Home() {
     fetchTodos
   }, []);
 
+  const handleLogout = async () => {
+    await fetch('/api/auth/logout');
+    window.location.href = '/login';
+  };
+
+
   return (
-    <div className={styles.container}>
-      <h1>My ToDos</h1>
-      <ul>
-        {todos.map((todo: any) => (
-          <li key={todo.id}>{todo.title}</li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <div className={styles.container}>
+        <h1>My ToDos</h1>
+        <ul>
+          {todos.map((todo: any) => (
+            <li key={todo.id}>{todo.title}</li>
+          ))}
+        </ul>
+      </div>
+      <button onClick={handleLogout}>ログアウト</button>
+    </>
   );
 }
