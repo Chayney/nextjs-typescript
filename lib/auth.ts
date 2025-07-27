@@ -3,12 +3,16 @@ import { serialize } from 'cookie';
 
 const SECRET = process.env.JWT_SECRET || 'your-secret-key';
 
+type TokenPayload = {
+    userId: string;
+};
+
 export function signToken(payload: object) {
     return jwt.sign(payload, SECRET, { expiresIn: '1d' });
 }
 
-export function verifyToken(token: string) {
-    return jwt.verify(token, SECRET);
+export function verifyToken(token: string): TokenPayload {
+    return jwt.verify(token, SECRET) as TokenPayload;
 }
 
 export function setAuthCookie(res: any, token: string) {
