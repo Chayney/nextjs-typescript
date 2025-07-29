@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 import { serialize } from 'cookie';
+import { ServerResponse } from 'http';
 
 const SECRET = process.env.JWT_SECRET || 'your-secret-key';
 
@@ -15,7 +16,7 @@ export function verifyToken(token: string): TokenPayload {
     return jwt.verify(token, SECRET) as TokenPayload;
 }
 
-export function setAuthCookie(res: any, token: string) {
+export function setAuthCookie(res: ServerResponse, token: string) {
     res.setHeader('Set-Cookie', serialize('token', token, {
         httpOnly: true,
         path: '/',

@@ -1,8 +1,13 @@
 import { useEffect, useState } from 'react';
 import styles from '../styles/Home.module.css';
 
+type Todo = {
+  id: string;
+  title: string;
+};
+
 export default function Home() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState<Todo[]>([]);
 
   const fetchTodos = async () => {
     const res = await fetch('/api/todos');
@@ -11,7 +16,7 @@ export default function Home() {
   }
 
   useEffect(() => {
-    fetchTodos
+    fetchTodos();
   }, []);
 
   const handleLogout = async () => {

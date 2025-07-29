@@ -14,9 +14,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     try {
-        const { userId }: any = verifyToken(token);
+        const { userId }: { userId: string } = verifyToken(token);
+        const numericUserId = parseInt(userId, 10);
         if (req.method === 'GET') {
-            const todos = await prisma.todo.findMany({ where: { userId } });
+            const todos = await prisma.todo.findMany({ where: { userId: numericUserId } });
             res.status(200).json(todos);
         } else {
             res.status(405).end();
