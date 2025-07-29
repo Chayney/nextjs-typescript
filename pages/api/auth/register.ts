@@ -33,7 +33,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         setAuthCookie(res, token);
 
         res.status(201).json({ message: 'User created' });
-    } catch (error) {
+    } catch (_error) {
         res.status(500).json({ message: 'Server error' });
     }
 }

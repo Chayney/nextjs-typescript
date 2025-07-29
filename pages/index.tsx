@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from '../styles/Home.module.css';
 
 type Todo = {
-  id: string;
+  id: number;
   title: string;
 };
 
@@ -30,7 +30,7 @@ export default function Home() {
       <div className={styles.container}>
         <h1>My ToDos</h1>
         <ul>
-          {todos.map((todo: any) => (
+          {todos.map((todo) => (
             <li key={todo.id}>{todo.title}</li>
           ))}
         </ul>

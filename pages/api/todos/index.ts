@@ -22,7 +22,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         } else {
             res.status(405).end();
         }
-    } catch (err) {
+    } catch (_err) {
         res.status(401).json({ message: 'Unauthorized' });
     }
 }
